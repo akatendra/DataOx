@@ -75,7 +75,8 @@ def write_to_db(data):
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                    '''
     item_ids = set(data.keys())
-    logger.debug(f'item_ids from parsed data: {type(item_ids)}, {len(item_ids)}, {item_ids}')
+    logger.debug(
+        f'item_ids from parsed data: {type(item_ids)}, {len(item_ids)}, {item_ids}')
     item_ids_database = get_item_ids()
     item_ids_to_write = item_ids.difference(item_ids_database)
     logger.debug(f'item_ids_to_write: {item_ids_to_write}')
@@ -87,6 +88,7 @@ def write_to_db(data):
         logger.debug(f'{type(data_tuple)}, {data_tuple}')
         execute_sql_query(sql_put_data, fetch=False, data=data_tuple)
     logger.info('Data saved into table items!')
+
 
 ###############################################################################
 ######################### INITIATE DB CREATION ################################
